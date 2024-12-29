@@ -41,4 +41,3 @@ The script calculates a phishing probability based on the presence of the extrac
 
 ---
 
-Feel free to adjust or expand upon this README file based on your specific requirements or use case. Remember to always prioritize ethical considerations when working with any form of technology.

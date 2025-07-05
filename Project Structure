@@ -1,0 +1,21 @@
+phishing-detector/
+├── data/
+│   ├── raw/                  # Raw email datasets
+│   ├── processed/            # Processed datasets
+│   └── models/               # Saved models
+├── src/
+│   ├── features/             # Feature engineering
+│   │   ├── __init__.py
+│   │   └── extractor.py      # EmailFeatureExtractor
+│   ├── models/               # Model implementations
+│   │   ├── __init__.py
+│   │   ├── bert_model.py     # BERTPhishingClassifier
+│   │   └── ensemble.py       # PhishingDetector
+│   ├── utils/                # Helper functions
+│   │   ├── __init__.py
+│   │   └── preprocessing.py  # Text cleaning
+│   ├── config.py            # Configuration file
+│   └── main.py              # Main application
+├── tests/                   # Unit tests
+├── requirements.txt         # Python dependencies
+└── README.md               # Project documentation

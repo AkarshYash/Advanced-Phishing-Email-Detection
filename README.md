@@ -1,43 +1,93 @@
-Certainly! Here's a README file for the code snippet you provided:
+
+
+# 📧 Email Detection & Feature Extractor  
+**A Python tool for detecting email files and extracting key features (headers, content, attachments) with forensic capabilities.**  
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue) 
+![License](https://img.shields.io/badge/License-MIT-green) 
+![CLI](https://img.shields.io/badge/CLI-Yes-brightgreen)
 
 ---
 
-# Phishing Email Detection Feature Extractor
-
-This Python script extracts features from an email text to determine the likelihood of it being a phishing email. It calculates a phishing probability based on the presence of certain features within the email text.
-
-## Usage
-
-1. Ensure you have Python installed on your system.
-2. Open the script file (`phishing_feature_extractor.py`) in a text editor.
-3. Modify the `email_text` variable to contain the text of the email you want to analyze.
-4. Run the script using Python.
-
-## Features Extracted
-
-The script extracts the following features from the email text:
-
-- **Contains HTTP/HTTPS:** Checks if the email text contains 'http' or 'https' URLs.
-- **Contains '@' symbol:** Checks if the email text contains the '@' symbol.
-- **Contains dot:** Checks if the email text contains a dot ('.').
-- **Contains dollar sign:** Checks if the email text contains the dollar sign ('$').
-- **Contains exclamation mark:** Checks if the email text contains an exclamation mark ('!').
-- **Contains question mark:** Checks if the email text contains a question mark ('?').
-- **Contains percent sign:** Checks if the email text contains a percent sign ('%').
-- **Contains numbers:** Checks if the email text contains any numeric characters.
-- **Word count:** Calculates the total number of words in the email text.
-- **Average word length:** Calculates the average length of words in the email text.
-
-## Phishing Probability Calculation
-
-The script calculates a phishing probability based on the presence of the extracted features. It sums up the presence of each feature and divides it by the total number of features. If the phishing probability is greater than 0.5, the email is considered likely to be a phishing attempt.
-
-## Important Notes
-
-- This script is for educational purposes only.
-- Use this script responsibly and ethically.
-- The results of the phishing probability calculation may vary based on the features extracted and the characteristics of the email text.
-- Consider additional features and validation techniques for more accurate phishing detection.
+## 🔍 **What This Tool Does**  
+1. **Detects email files** (`.eml`, `.msg`, `.pst`) in directories  
+2. **Extracts metadata**:  
+   - Headers (From/To/Subject)  
+   - Body content (plaintext/HTML)  
+   - Attachments (with hash generation)  
+3. **Forensic Mode**:  
+   - IP extraction from headers  
+   - DKIM/DMARC validation  
+   - Timeline reconstruction  
 
 ---
 
+## 🛠️ **Tech Stack**  
+```python
+├── email_analyzer.py       # Core extraction logic
+├── file_scanner.py         # Filesystem traversal  
+├── forensic_mode.py        # Advanced analysis  
+├── utils/                  # Helpers (hashing, etc.)
+└── tests/                  # Sample .eml files for testing
+```
+
+**Key Libraries**:  
+- `email` (Python stdlib) - Parsing MIME emails  
+- `olefile` - MSG file handling  
+- `pypff` - PST file support *(optional)*  
+- `tqdm` - Progress bars  
+
+---
+
+## 🚀 **Quick Start**  
+
+### Installation  
+```bash
+git clone https://github.com/AkarshYash/Email-Detection-Feature-Extractor.git
+cd Email-Detection-Feature-Extractor
+pip install -r requirements.txt
+```
+
+### Basic Usage  
+```bash
+# Scan a directory for emails
+python email_analyzer.py --input ./emails/ --output report.json
+
+# Enable forensic mode
+python email_analyzer.py --forensic --input suspect.eml
+```
+
+---
+
+## 💡 **Features**  
+
+### **1. Email Detection**  
+- Supports: `.eml`, `.msg`, `.pst`  
+- Recursive directory scanning  
+
+### **2. Feature Extraction**  
+| Feature          | Example Output |  
+|------------------|----------------|  
+| **Headers**      | `X-Originating-IP: 192.168.1.1` |  
+| **Body Text**    | `Plaintext/HTML extracted` |  
+| **Attachments**  | `invoice.pdf (SHA256: a1b2c3...)` |  
+
+### **3. Forensic Mode**  
+```python
+{
+  "sender_ip": "192.168.1.1",
+  "dkim_verified": false,
+  "received_chain": [
+    "2023-01-01 12:00:00 - Received by mail.server.com"
+  ]
+}
+```
+
+
+
+---
+
+## 🤝 **Contributing**  
+1. Fork the repository  
+2. Add tests for new features  
+3. Submit a PR with clear documentation  
